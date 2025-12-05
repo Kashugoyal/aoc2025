@@ -1,6 +1,7 @@
 include!("day1.rs");
 include!("day2.rs");
 include!("day3.rs");
+include!("day4.rs");
 trait Solution{
     fn part1(&self, input: &str) -> i64;
     fn part2(&self, input: &str) -> i64;
@@ -28,4 +29,9 @@ fn main() {
     let day3_data = read_input("inputs/day3.txt".to_string());
     println!("Day 3 Part 1: {}", day3.part1(&day3_data));
     println!("Day 3 Part 2: {}", day3.part2(&day3_data));
+
+    let day4 = Day4{};
+    let day4_data = read_input("inputs/day4.txt".to_string());
+    println!("Day 4 Part 1: {}", day4.part1(&day4_data));
+    println!("Day 4 Part 2: {}", day4.part2(&day4_data));
 }
