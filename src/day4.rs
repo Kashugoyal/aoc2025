@@ -1,16 +1,18 @@
+use std::usize;
+
 struct Day4;
 
-fn parse_day4_input(input: &str) -> Vec<Vec<String>> {
-    let mut output: Vec<Vec<String>> = Vec::new();
+fn parse_day4_input(input: &str) -> Vec<Vec<char>> {
+    let mut output: Vec<Vec<char>> = Vec::new();
     for line in input.lines() {
-        let row: Vec<String> = line.trim().chars().map(|c| c.to_string()).collect();
+        let row: Vec<char> = line.trim().chars().collect();
         output.push(row);
-        println!("{:?}", line);
+        // println!("{:?}", line);
     }
     output
 }
 
-fn get_neighbors(x: i32, y: i32, grid: &Vec<Vec<String>>) -> i32 {
+fn get_neighbors(x: i32, y: i32, grid: &Vec<Vec<char>>) -> i32 {
     // let mut neighbors = Vec::new();
     let mut neighbors = 0;
     let directions = [
@@ -31,7 +33,7 @@ fn get_neighbors(x: i32, y: i32, grid: &Vec<Vec<String>>) -> i32 {
             && new_x < grid.len() as i32
             && new_y >= 0
             && new_y < grid[0].len() as i32
-            && grid[new_x as usize][new_y as usize] == "@"
+            && grid[new_x as usize][new_y as usize] == '@'
         {
             neighbors += 1;
         }
@@ -41,31 +43,59 @@ fn get_neighbors(x: i32, y: i32, grid: &Vec<Vec<String>>) -> i32 {
 
 impl Day4 {
     pub fn part1(&self, input: &str) -> i64 {
-        // Implementation for part 1
         let data = parse_day4_input(input);
         let mut result = 0;
         for i in 0..data.len() {
             for j in 0..data[0].len() {
-                if data[i][j] == "." {
-                    print!(".");
+                if data[i][j] == '.' {
+                    // print!(".");
                     continue;
                 }
                 let val = get_neighbors(i as i32, j as i32, &data);
                 if val < 4 {
-                    print!("x");
+                    // print!("x");
                     result += 1;
                 } else {
-                    print!("@");
+                    // print!("@");
                 }
             }
-            println!();
+            // println!();
         }
         result as i64
     }
 
-    pub fn part2(&self, _: &str) -> i64 {
-        // Implementation for part 2
-        0
+    pub fn part2(&self, input: &str) -> i64 {
+        let mut data = parse_day4_input(input);
+        //  top level loop for keep removing rolls
+        let mut did_remove = true;
+        let mut result = 0;
+        while did_remove {
+            did_remove = false;
+            let mut locations = Vec::new();
+            for i in 0..data.len() {
+                for j in 0..data[0].len() {
+                    if data[i][j] == '.' {
+                        // print!(".");
+                        continue;
+                    }
+                    let val = get_neighbors(i as i32, j as i32, &data);
+                    if val < 4 {
+                        // print!("x");
+                        result += 1;
+                        locations.push((i, j));
+                        did_remove = true;
+                    } else {
+                        // print!("@");
+                    }
+                }
+                // println!();
+            }
+            locations.iter().for_each(|(i, j)| {
+                data[*i][*j] = '.';
+            });
+            // println!("---");
+        }
+        result as i64
     }
 }
 
@@ -104,6 +134,6 @@ mod day4_tests {
 @.@.@@@.@.";
         let day4 = Day4;
         let result = day4.part2(input);
-        assert_eq!(result, 0); // Replace 0 with the expected result
+        assert_eq!(result, 43, "Expected 43 but got {}", result);
     }
 }
