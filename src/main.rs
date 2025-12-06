@@ -2,7 +2,8 @@ include!("day1.rs");
 include!("day2.rs");
 include!("day3.rs");
 include!("day4.rs");
-trait Solution{
+include!("day5.rs");
+pub trait Solution{
     fn part1(&self, input: &str) -> i64;
     fn part2(&self, input: &str) -> i64;
 }
@@ -34,4 +35,9 @@ fn main() {
     let day4_data = read_input("inputs/day4.txt".to_string());
     println!("Day 4 Part 1: {}", day4.part1(&day4_data));
     println!("Day 4 Part 2: {}", day4.part2(&day4_data));
+
+    let day5 = Day5{};
+    let day5_data = read_input("inputs/day5.txt".to_string());
+    println!("Day 5 Part 1: {}", day5.part1(&day5_data));
+    println!("Day 5 Part 2: {}", day5.part2(&day5_data));
 }

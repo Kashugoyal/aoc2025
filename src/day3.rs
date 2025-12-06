@@ -16,8 +16,8 @@ fn parse_day3_input(input: &str) -> Vec<Vec<i32>> {
 }
 
 
-impl Day3 {
-    pub fn part1(&self, input: &str) -> i64 {
+impl Solution for Day3 {
+    fn part1(&self, input: &str) -> i64 {
         let data = parse_day3_input(input);
         let mut result = 0;
         for row in data.iter() {
@@ -38,7 +38,7 @@ impl Day3 {
         result as i64
     }
 
-    pub fn part2(&self, input: &str) -> i64 {
+    fn part2(&self, input: &str) -> i64 {
         let data = parse_day3_input(input);
         let mut result = 0;
         for row in data.iter() {

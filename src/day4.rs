@@ -41,8 +41,8 @@ fn get_neighbors(x: i32, y: i32, grid: &Vec<Vec<char>>) -> i32 {
     neighbors
 }
 
-impl Day4 {
-    pub fn part1(&self, input: &str) -> i64 {
+impl Solution for Day4 {
+    fn part1(&self, input: &str) -> i64 {
         let data = parse_day4_input(input);
         let mut result = 0;
         for i in 0..data.len() {
@@ -64,7 +64,7 @@ impl Day4 {
         result as i64
     }
 
-    pub fn part2(&self, input: &str) -> i64 {
+    fn part2(&self, input: &str) -> i64 {
         let mut data = parse_day4_input(input);
         //  top level loop for keep removing rolls
         let mut did_remove = true;
