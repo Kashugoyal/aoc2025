@@ -1,4 +1,6 @@
-struct Day5;
+use crate::solution::Solution;
+
+pub struct Day5;
 
 fn parse_day5_input(input: &str) -> (Vec<(i64, i64)>, Vec<i64>) {
     let mut iter = input.lines();
@@ -40,7 +42,6 @@ fn merge_intervals(ranges: &mut Vec<(i64, i64)>) -> Vec<(i64, i64)> {
     merged
 }
 
-
 impl Solution for Day5 {
     fn part1(&self, input: &str) -> i64 {
         let (mut ranges, ids) = parse_day5_input(input);
@@ -71,7 +72,7 @@ impl Solution for Day5 {
 
 #[cfg(test)]
 mod day5_tests {
-    use super::*;
+    use crate::{day5::Day5, solution::Solution};
 
     #[test]
     fn test_day5_part1() {

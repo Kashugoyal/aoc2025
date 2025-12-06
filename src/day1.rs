@@ -1,4 +1,6 @@
-struct Day1;
+use crate::solution::Solution;
+
+pub struct Day1;
 
 fn parse_day1_input(input: &str) -> Vec<(char, i64)> {
     input
@@ -63,7 +65,7 @@ impl Solution for Day1 {
 
 #[cfg(test)]
 mod day1_tests {
-    use super::*;
+    use crate::{day1::Day1, solution::Solution};
 
     const TEST_INPUT: &str = "L68
 L30

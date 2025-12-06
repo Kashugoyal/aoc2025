@@ -1,4 +1,6 @@
-struct Day2;
+use crate::solution::Solution;
+
+pub struct Day2;
 
 fn parse_day2_input(input: &str) -> Vec<(i64, i64)> {
     let mut output: Vec<(i64, i64)> = vec![];
@@ -100,11 +102,11 @@ impl Solution for Day2 {
 
 #[cfg(test)]
 mod day2_tests {
-    use super::Solution;
+    use crate::{day2::Day2, solution::Solution};
 
     #[test]
     fn test_day2_part1() {
-        let day2 = super::Day2 {};
+        let day2 = Day2 {};
         let input = "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124";
         let result = day2.part1(input);
         let expected = 1227775554;
@@ -116,7 +118,7 @@ mod day2_tests {
     }
     #[test]
     fn test_day2_part2() {
-        let day2 = super::Day2 {};
+        let day2 = Day2 {};
         let input = "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124";
         let result = day2.part2(input);
         let expected = 4174379265;
