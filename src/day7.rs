@@ -124,6 +124,3 @@ mod day7_tests {
         assert_eq!(result, 40, "Expected 40 but got {}", result); // Replace 0 with the expected result
     }
 }
-
-// 1, 2, 3, 4, 6, 7
-// 2, 4, 7,
