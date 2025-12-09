@@ -2,7 +2,6 @@ use crate::solution::Solution;
 
 pub struct Day6;
 
-
 impl Solution for Day6 {
     fn part1(&self, input: &str) -> i64 {
         let mut data = vec![];
@@ -13,24 +12,24 @@ impl Solution for Day6 {
         let rows = data.len();
         let mut result: i64 = 0;
         for i in 0..data[0].len() {
-            match data[rows-1][i] {
-               "*" => {
-                let mut value: i64 = 1;
-                for j in 0..rows-1 {
-                    value *= data[j][i].parse::<i64>().unwrap();
+            match data[rows - 1][i] {
+                "*" => {
+                    let mut value: i64 = 1;
+                    for j in 0..rows - 1 {
+                        value *= data[j][i].parse::<i64>().unwrap();
+                    }
+                    result += value;
                 }
-                result += value;
-               }
-               "+" => {
-                let mut value: i64 = 0;
-                for j in 0..rows-1 {
-                    value += data[j][i].parse::<i64>().unwrap();
+                "+" => {
+                    let mut value: i64 = 0;
+                    for j in 0..rows - 1 {
+                        value += data[j][i].parse::<i64>().unwrap();
+                    }
+                    result += value;
                 }
-                result += value;
-               }
-               _ => {
-                panic!("unexpected value");
-               }
+                _ => {
+                    panic!("unexpected value");
+                }
             }
         }
         result
@@ -47,7 +46,7 @@ impl Solution for Day6 {
         let mut sum: i64 = 0;
         for i in (0..data[0].len()).rev() {
             let mut number: String = String::from("");
-            for j in 0..data.len()-1 {
+            for j in 0..data.len() - 1 {
                 number.push(data[j][i]);
             }
             if number.trim().is_empty() {
@@ -55,19 +54,19 @@ impl Solution for Day6 {
             }
             product *= number.trim().parse::<i64>().unwrap();
             sum += number.trim().parse::<i64>().unwrap();
-            match data[data.len()-1][i] {
+            match data[data.len() - 1][i] {
                 '*' => {
                     result += product;
                     product = 1;
                     sum = 0;
-                } 
+                }
                 '+' => {
                     result += sum;
                     product = 1;
                     sum = 0;
                 }
                 ' ' => {}
-                _ => panic!("unexpected")
+                _ => panic!("unexpected"),
             }
         }
         result
@@ -86,7 +85,7 @@ mod day6_tests {
         let day6 = Day6;
         let result = day6.part1(input);
         assert_eq!(result, 4277556, "Expected 4277556 but got {}", result); // Replace 0 with the expected result
-    }   
+    }
 
     #[test]
     fn test_day6_part2() {
