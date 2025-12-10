@@ -5,6 +5,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 mod solution;
 
 use day1::Day1;
@@ -14,6 +15,7 @@ use day4::Day4;
 use day5::Day5;
 use day6::Day6;
 use day7::Day7;
+use day8::Day8;
 use solution::Solution;
 
 use std::time::Instant;
@@ -85,4 +87,11 @@ fn main() {
     println!("Day 7 Part 1 Duration: {:?}, Ans: {},", part1_duration, part1_result);
     let (part2_result, part2_duration) = time_wrapper(|| day7.part2(&day7_data));
     println!("Day 7 Part 2 Duration: {:?}, Ans: {},", part2_duration, part2_result);
+
+    let day8 = Day8::default();
+    let day8_data = read_input("inputs/day8.txt");
+    let (part1_result, part1_duration) = time_wrapper(|| day8.part1(&day8_data));
+    println!("Day 8 Part 1 Duration: {:?}, Ans: {},", part1_duration, part1_result);
+    let (part2_result, part2_duration) = time_wrapper(|| day8.part2(&day8_data));
+    println!("Day 8 Part 2 Duration: {:?}, Ans: {},", part2_duration, part2_result);
 }
